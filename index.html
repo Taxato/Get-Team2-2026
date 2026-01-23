@@ -21,17 +21,31 @@
 		</p>
 
 		<button onclick="changeColor()">Hit me baby one more time!</button>
+		<button onclick="restoreBackgroundColor()">
+			Tilbakestill bakgrunnsfarge
+		</button>
 
 		<script>
+			const originalBackgrundColor =
+				document.querySelector("body").style.backgroundColor;
 			function changeColor() {
 				document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 80%, 80%)`;
 			}
+			function restoreBackgroundColor() {
+				document.body.style.backgroundColor = originalBackgrundColor;
+			}
+			function handleClick() {}
 		</script>
+
 		<style>
 			* {
 				padding: 0;
 				margin: 0;
 				box-sizing: border-box;
+			}
+
+			body {
+				background-color: hsl(200, 39%, 41%);
 			}
 
 			@keyframes gradientMotion {
