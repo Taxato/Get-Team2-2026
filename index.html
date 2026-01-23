@@ -20,21 +20,29 @@
 			Fiske og Friluft, Motorsykkler, Gaming
 		</p>
 
-		<button onclick="changeColor()">Hit me baby one more time!</button>
-		<button onclick="restoreBackgroundColor()">
-			Tilbakestill bakgrunnsfarge
-		</button>
+		<button onclick="handleClick()">Hit me baby one more time!</button>
 
 		<script>
-			const originalBackgrundColor =
+			const originalBackgroundColor =
 				document.querySelector("body").style.backgroundColor;
-			function changeColor() {
-				document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 80%, 80%)`;
+
+			let currentBackgroundState = "original";
+
+			function setBackgroundColor(color) {
+				document.body.style.backgroundColor = color;
 			}
-			function restoreBackgroundColor() {
-				document.body.style.backgroundColor = originalBackgrundColor;
+
+			function handleClick() {
+				if (currentBackgroundState === "original") {
+					setBackgroundColor(
+						`hsl(${Math.random() * 360}, 75%, ${Math.random() * 30 + 60}%)`,
+					);
+					currentBackgroundState = "random";
+				} else {
+					setBackgroundColor(originalBackgroundColor);
+					currentBackgroundState = "original";
+				}
 			}
-			function handleClick() {}
 		</script>
 
 		<style>
@@ -45,7 +53,7 @@
 			}
 
 			body {
-				background-color: hsl(200, 39%, 41%);
+				background-color: hsl(187, 73%, 64%);
 			}
 
 			@keyframes gradientMotion {
@@ -61,7 +69,9 @@
 			#thomas-p {
 				padding: 12px;
 				margin-block: 16px;
-				font-family: sans-serif;
+				text-transform: uppercase;
+				font-family:
+					Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 				width: 48rem;
 				margin-inline: auto;
 				font-weight: 100;
@@ -84,7 +94,7 @@
 					red
 				);
 				background-size: 200%;
-				animation: 2s linear infinite forwards gradientMotion;
+				animation: 10s linear infinite forwards gradientMotion;
 			}
 
 			#RemyD {
