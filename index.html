@@ -31,17 +31,17 @@
 		<button onclick="selectname()">FAAAT</button>
 		<input id="navn2" />
 		<ul>
-			<li id="Li-remy"></li>
-			<li id="Li-isak"></li>
-			<li id="Li-thomas"></li>
-			<li id="Li-andreas"></li>
+			<li id="Li-remy">Remy -</li>
+			<li id="Li-isak">Isak -</li>
+			<li id="Li-thomas">Thomas -</li>
+			<li id="Li-andreas">Andreas -</li>
 		</ul>
 		<script>
 			function selectname() {
 				let optionname = document.getElementById("navn").value;
 				let inputname = document.getElementById("navn2").value;
 				document.getElementById(`Li-${optionname}`).innerHTML +=
-					inputname;
+					". " + inputname;
 			}
 
 			const originalBackgroundColor =
