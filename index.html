@@ -21,8 +21,29 @@
 		</p>
 
 		<button onclick="handleClick()">Hit me baby one more time!</button>
-
+		<select id="navn">
+			<option value="remy">Remy</option>
+			<option value="isak">Isak</option>
+			<option value="thomas">Thomas</option>
+			<option value="andreas">Andreas</option>
+		</select>
+		<p id="result"></p>
+		<button onclick="selectname()">FAAAT</button>
+		<input id="navn2" />
+		<ul>
+			<li id="Li-remy"></li>
+			<li id="Li-isak"></li>
+			<li id="Li-thomas"></li>
+			<li id="Li-andreas"></li>
+		</ul>
 		<script>
+			function selectname() {
+				let optionname = document.getElementById("navn").value;
+				let inputname = document.getElementById("navn2").value;
+				document.getElementById(`Li-${optionname}`).innerHTML +=
+					inputname;
+			}
+
 			const originalBackgroundColor =
 				document.querySelector("body").style.backgroundColor;
 
