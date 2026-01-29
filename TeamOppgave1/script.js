@@ -134,7 +134,7 @@ function clearAll() {
 	document.getElementById("toolsContent").innerHTML = "";
 	document.getElementById("htmlContent").innerHTML = "";
 	document.getElementById("cssContent").innerHTML = "";
-	document.getElementById("jSContent").innerHTML = "";
+	document.getElementById("jsContent").innerHTML = "";
 	document.getElementById("bodyGameContent").innerHTML = "";
 }
 
@@ -145,12 +145,15 @@ function showTools() {
 
 function showHtml() {
 	clearAll();
+	document.getElementById("htmlContent").innerHTML = htmlCardTemplate;
 }
 function showCss() {
 	clearAll();
+	document.getElementById("cssContent").innerHTML = cssCardTemplate;
 }
 function showJS() {
 	clearAll();
+	document.getElementById("jsContent").innerHTML = jsCardTemplate;
 }
 function showBodyGame() {
 	clearAll();
