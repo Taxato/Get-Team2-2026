@@ -110,32 +110,34 @@ const jsCardTemplate = /*html*/ `
 	</div>`;
 
 const bodyGameTemplate = /* html */ `
-	<div class="bodyPart">
-		<button onclick="changeHead(-1)">
-			<img src="public/arrow_left.svg" />
-		</button>
-		<p id="head">😶</p>
-		<button onclick="changeHead(1)">
-			<img src="public/arrow_right.svg" />
-		</button>
-	</div>
-	<div class="bodyPart">
-		<button onclick="changeTorso(-1)">
-			<img src="public/arrow_left.svg" />
-		</button>
-		<p id="torso">👚</p>
-		<button onclick="changeTorso(1)">
-			<img src="public/arrow_right.svg" />
-		</button>
-	</div>
-	<div class="bodyPart">
-		<button onclick="changeLegs(-1)">
-			<img src="public/arrow_left.svg" />
-		</button>
-		<p id="legs">👖</p>
-		<button onclick="changeLegs(1)">
-			<img src="public/arrow_right.svg" />
-		</button>
+	<div class="innerCard">
+		<div class="bodyPart">
+			<button onclick="changeHead(-1)">
+				<img src="public/arrow_left.svg" />
+			</button>
+			<div id="head">😶</div>
+			<button onclick="changeHead(1)">
+				<img src="public/arrow_right.svg" />
+			</button>
+		</div>
+		<div class="bodyPart">
+			<button onclick="changeTorso(-1)">
+				<img src="public/arrow_left.svg" />
+			</button>
+			<div id="torso">👚</div>
+			<button onclick="changeTorso(1)">
+				<img src="public/arrow_right.svg" />
+			</button>
+		</div>
+		<div class="bodyPart">
+			<button onclick="changeLegs(-1)">
+				<img src="public/arrow_left.svg" />
+			</button>
+			<div id="legs">👖</div>
+			<button onclick="changeLegs(1)">
+				<img src="public/arrow_right.svg" />
+			</button>
+		</div>
 	</div>`;
 
 //Buttons
@@ -205,9 +207,7 @@ function changeHead(change) {
 let torso = "";
 let torsoIndex = 0;
 function changeTorso(change) {
-	console.log("Before change:", torsoIndex);
 	torsoIndex += change;
-	console.log("After change:", torsoIndex);
 
 	if (torsoIndex < 0) {
 		// Hvis index er mindre enn null setter vi den til 2
@@ -217,14 +217,12 @@ function changeTorso(change) {
 		// Hvis index er større enn 2 setter vi den til 0
 		torsoIndex = 0;
 	}
-	console.log("After correction:", torsoIndex);
-	console.log("\n\n");
 
 	if (torsoIndex === 0) {
-		torso = "🥼";
+		torso = "👚";
 	}
 	if (torsoIndex === 1) {
-		torso = "🦺";
+		torso = "👕";
 	}
 	if (torsoIndex === 2) {
 		torso = "🧥";
@@ -233,7 +231,7 @@ function changeTorso(change) {
 	document.getElementById("torso").innerHTML = torso;
 }
 
-let legs = "";
+const allLegs = ["👖", "🩳", "🩰"];
 let legIndex = 0;
 function changeLegs(change) {
 	legIndex += change;
@@ -245,15 +243,5 @@ function changeLegs(change) {
 		legIndex = 0;
 	}
 
-	if (legIndex === 0) {
-		legs = "👖";
-	}
-	if (legIndex === 1) {
-		legs = "🩳";
-	}
-	if (legIndex === 2) {
-		legs = "🩲";
-	}
-
-	document.getElementById("legs").innerHTML = legs;
+	document.getElementById("legs").innerHTML = allLegs[legIndex];
 }
