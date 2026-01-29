@@ -32,20 +32,19 @@ const htmlCardTemplate = /*html*/ `
 			<li>
 				<a
 					href="https://www.w3schools.com/html/default.asp"
-					target="_new"
-					>W3Schools HTML Tutorial</a
-				>
+					target="_new">
+					W3Schools HTML Tutorial
+				</a>
 			</li>
 			<li>
 				<a
 					href="https://www.w3schools.com/tags/default.asp"
-					target="_new"
-					>W3Schools HTML Reference</a
-				>
+					target="_new">
+					W3Schools HTML Reference
+				</a>
 			</li>
 		</ul>
-	</div>
-`;
+	</div>`;
 
 const cssCardTemplate = /*html*/ `
 	<div class="innerCard">
@@ -111,16 +110,33 @@ const jsCardTemplate = /*html*/ `
 	</div>`;
 
 const bodyGameTemplate = /* html */ `
-	<div
-		class="bodyPart"><button onclick="nextHead()">&larr;</button> <p id="hode">😶</p> <button onclick="prevHead()">--></button>
-        </div>
-	<div
-		class="bodyPart"><button onclick="nesteTorso()">&larr;</button> <p id="torso">👚</p> <button onclick="nesteTorso1()">--></button>
+	<div class="bodyPart">
+		<button onclick="changeHead(-1)">
+			<img src="public/arrow_left.svg" />
+		</button>
+		<p id="head">😶</p>
+		<button onclick="changeHead(1)">
+			<img src="public/arrow_right.svg" />
+		</button>
 	</div>
-	<div
-		class="bodyPart"><button onclick="prevLegs()">&larr;</button> <p id="legs">👖</p> <button onclick="nextLegs()">--></button>
-        </div>
-`;
+	<div class="bodyPart">
+		<button onclick="changeTorso(-1)">
+			<img src="public/arrow_left.svg" />
+		</button>
+		<p id="torso">👚</p>
+		<button onclick="changeTorso(1)">
+			<img src="public/arrow_right.svg" />
+		</button>
+	</div>
+	<div class="bodyPart">
+		<button onclick="changeLegs(-1)">
+			<img src="public/arrow_left.svg" />
+		</button>
+		<p id="legs">👖</p>
+		<button onclick="changeLegs(1)">
+			<img src="public/arrow_right.svg" />
+		</button>
+	</div>`;
 
 //Buttons
 function noLayout() {}
@@ -157,132 +173,87 @@ function showJS() {
 }
 function showBodyGame() {
 	clearAll();
-    document.getElementById("bodyGameContent").innerHTML = bodyGameTemplate;
-    
+	document.getElementById("bodyGameContent").innerHTML = bodyGameTemplate;
 }
-let x = 1;
-let hode ="";
-function nextHead(){
-    
 
-    x = x + 1;
-    
-    if (x === 4) {
-        x = 1;
-    }
-    if (x === 1) {
-        hode = "😁";
-    }
-    if (x === 2) {
-        hode = "😒";
-    }
-    if (x === 3) {
-        hode = "😘";
-    }
+let head = "";
+let headIndex = 0;
+function changeHead(change) {
+	headIndex += change; // headIndex = headIndex + change
 
-    document.getElementById("hode").innerHTML = hode;
+	if (headIndex > 2) {
+		headIndex = 0;
+	}
+
+	if (headIndex < 0) {
+		headIndex = 2;
+	}
+
+	if (headIndex === 0) {
+		hode = "😁";
+	}
+	if (headIndex === 1) {
+		hode = "😒";
+	}
+	if (headIndex === 2) {
+		hode = "😘";
+	}
+
+	document.getElementById("head").innerHTML = hode;
 }
-function prevHead(){
-    
 
-    x = x - 1;
-    
-    if (x === 0) {
-        x = 3;
-    }
-    if (x === 1) {
-        hode = "😁";
-    }
-    if (x === 2) {
-        hode = "😒";
-    }
-    if (x === 3) {
-        hode = "😘";
-    }
+let torso = "";
+let torsoIndex = 0;
+function changeTorso(change) {
+	console.log("Before change:", torsoIndex);
+	torsoIndex += change;
+	console.log("After change:", torsoIndex);
 
-    document.getElementById("hode").innerHTML = hode;
+	if (torsoIndex < 0) {
+		// Hvis index er mindre enn null setter vi den til 2
+		torsoIndex = 2;
+	}
+	if (torsoIndex > 2) {
+		// Hvis index er større enn 2 setter vi den til 0
+		torsoIndex = 0;
+	}
+	console.log("After correction:", torsoIndex);
+	console.log("\n\n");
+
+	if (torsoIndex === 0) {
+		torso = "🥼";
+	}
+	if (torsoIndex === 1) {
+		torso = "🦺";
+	}
+	if (torsoIndex === 2) {
+		torso = "🧥";
+	}
+
+	document.getElementById("torso").innerHTML = torso;
 }
-let y = 1;
-let torso ="";
-function nesteTorso(){
-    
 
-    y = y + 1;
-    
-    if (y === 4) {
-        y = 1;
-    }
-    if (y === 1) {
-        torso = "🥼";
-    }
-    if (y === 2) {
-        torso = "🦺";
-    }
-    if (y === 3) {
-        torso = "🧥";
-    }
+let legs = "";
+let legIndex = 0;
+function changeLegs(change) {
+	legIndex += change;
 
-    document.getElementById("torso").innerHTML = torso;
-}
-function nesteTorso1(){
-    
+	if (legIndex < 0) {
+		legIndex = 2;
+	}
+	if (legIndex > 2) {
+		legIndex = 0;
+	}
 
-    y = y - 1;
-    
-    if (y === 0) {
-        y = 3;
-    }
-    if (y === 1) {
-        torso = "🥼";
-    }
-    if (y === 2) {
-        torso = "🦺";
-    }
-    if (y === 3) {
-        torso = "🧥";
-    }
+	if (legIndex === 0) {
+		legs = "👖";
+	}
+	if (legIndex === 1) {
+		legs = "🩳";
+	}
+	if (legIndex === 2) {
+		legs = "🩲";
+	}
 
-    document.getElementById("torso").innerHTML = torso;
-}
-let z = 1;
-let legs ="";
-function nextLegs(){
-    
-
-    z = z + 1;
-    
-    if (z === 4) {
-        z = 1;
-    }
-    if (z === 1) {
-        legs = "👖";
-    }
-    if (z === 2) {
-        legs = "🩳";
-    }
-    if (z === 3) {
-        legs = "🩲";
-    }
-
-    document.getElementById("legs").innerHTML = legs;
-}
-function prevLegs(){
-    
-
-    z = z - 1;
-    
-    if (z === 0) {
-        z = 3;
-    }
-    if (z === 1) {
-        legs = "👖";
-    }
-    if (z === 2) {
-        legs = "🩳";
-    }
-    if (z === 3) {
-        legs = "🩲";
-    }
-
-    document.getElementById("legs").innerHTML = legs;
+	document.getElementById("legs").innerHTML = legs;
 }
