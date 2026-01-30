@@ -141,11 +141,21 @@ const bodyGameTemplate = /* html */ `
 	</div>`;
 
 //Buttons
-function noLayout() {}
-function verticalLayout() {}
-function horizontalLayout() {}
-function gridLayout() {}
-function showBodyGame() {}
+function noLayout() {
+	document.getElementById("cards").classList = "";
+}
+function verticalLayout() {
+	noLayout();
+	document.getElementById("cards").classList = "vertical";
+}
+function horizontalLayout() {
+	noLayout();
+	document.getElementById("cards").classList = "horizontal";
+}
+function gridLayout() {
+	noLayout();
+	document.getElementById("cards").classList = "grid";
+}
 
 //Cards
 function clearAll() {
