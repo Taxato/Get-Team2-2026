@@ -144,14 +144,17 @@ const bodyGameTemplate = /* html */ `
 function noLayout() {
 	document.getElementById("cards").classList = "";
 }
+
 function verticalLayout() {
 	noLayout();
 	document.getElementById("cards").classList = "vertical";
 }
+
 function horizontalLayout() {
 	noLayout();
 	document.getElementById("cards").classList = "horizontal";
 }
+
 function gridLayout() {
 	noLayout();
 	document.getElementById("cards").classList = "grid";
@@ -175,14 +178,17 @@ function showHtml() {
 	clearAll();
 	document.getElementById("htmlContent").innerHTML = htmlCardTemplate;
 }
+
 function showCss() {
 	clearAll();
 	document.getElementById("cssContent").innerHTML = cssCardTemplate;
 }
+
 function showJS() {
 	clearAll();
 	document.getElementById("jsContent").innerHTML = jsCardTemplate;
 }
+
 function showBodyGame() {
 	clearAll();
 	document.getElementById("bodyGameContent").innerHTML = bodyGameTemplate;
