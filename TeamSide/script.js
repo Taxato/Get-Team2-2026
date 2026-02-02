@@ -1,13 +1,16 @@
-let remyInfo = "";
-let isakInfo = "";
-let thomasInfo = "";
-let andreasInfo = "";
+let remyInfo =
+	"Hei! Jeg heter Remy, bor på Rennesøy, og er 36 år. Hobbyer: Trommer, Fiske og Friluft, Motorsykler, Gaming. ";
+let isakInfo = "Jeg heter Isak og jeg liker å sykle.. Jeg er 26 år. ";
+let thomasInfo = "Jeg heter Thomas, bor i Oslo, og jeg liker Gaming. ";
+let andreasInfo =
+	"Jeg heter Andreas, og jeg liker pasta og turer i skogen. Og turer i skogen med pasta. ";
+
+let currentInfo = "";
+
+let currentSelected = "";
 
 // Add a string of info to a selected team member
 function addInfo() {
-	// Get the selected <option> from our <select> element
-	const selectedName = document.getElementById("name-select").value;
-
 	// Get the input element
 	const infoInputEl = document.getElementById("info-input");
 
@@ -15,12 +18,20 @@ function addInfo() {
 	const infoInput = infoInputEl.value + ". ";
 
 	// Get the right variable based on which team member is selected
-	if (selectedName === "remy") remyInfo += infoInput;
-	else if (selectedName === "isak") isakInfo += infoInput;
-	else if (selectedName === "thomas") thomasInfo += infoInput;
-	else if (selectedName === "andreas") andreasInfo += infoInput;
-	else {
-		alert("Invalid name selected!!");
+	if (currentSelected === "remy") {
+		remyInfo += infoInput;
+		currentInfo = remyInfo;
+	} else if (currentSelected === "isak") {
+		isakInfo += infoInput;
+		currentInfo = isakInfo;
+	} else if (currentSelected === "thomas") {
+		thomasInfo += infoInput;
+		currentInfo = thomasInfo;
+	} else if (currentSelected === "andreas") {
+		andreasInfo += infoInput;
+		currentInfo = andreasInfo;
+	} else {
+		alert("Nobody selected!!");
 	}
 
 	// Clear the input field
@@ -32,80 +43,73 @@ function addInfo() {
 	updateView();
 }
 
-const originalBackgroundColor =
-	document.querySelector("body").style.backgroundColor;
-
-let currentBackgroundState = "original";
-
-function setBackgroundColor(color) {
-	document.body.style.backgroundColor = color;
-}
-
-function handleClick() {
-	if (currentBackgroundState === "original") {
-		setBackgroundColor(
-			`hsl(${Math.random() * 360}, 75%, ${Math.random() * 30 + 60}%)`,
-		);
-		currentBackgroundState = "random";
-	} else {
-		setBackgroundColor(originalBackgroundColor);
-		currentBackgroundState = "original";
-	}
-}
-
 function updateView() {
 	const appHtml = /* html */ `
-		<h1
-			class="h1"
-			id="h1">
-			Team 2 aka RITA
-		</h1>
-		<h2>Andreas, Isak, Remy, Thomas</h2>
+		<section class="info-section">
+			<div class="info-btns">
+				<div
+					data-selected=${currentSelected === "remy"}
+					data-name="remy"
+					class="btn info-btn"
+					onclick="displayInfo(this)">
+					Remy
+				</div>
+				<div
+					data-selected=${currentSelected === "isak"}
+					data-name="isak"
+					class="btn info-btn"
+					onclick="displayInfo(this)">
+					Isak
+				</div>
+				<div
+					data-selected=${currentSelected === "thomas"}
+					data-name="thomas"
+					class="btn info-btn"
+					onclick="displayInfo(this)">
+					Thomas
+				</div>
+				<div
+					data-selected=${currentSelected === "andreas"}
+					data-name="andreas"
+					class="btn info-btn"
+					onclick="displayInfo(this)">
+					Andreas
+				</div>
+			</div>
+			<div
+				id="info"
+				class="info">
+				${currentInfo}	
+			</div>
 
-		<p id="RemyD">
-			Hei! Jeg heter Remy, bor på Rennesøy, og er 36 år. Hobbyer: Trommer,
-			Fiske og Friluft, Motorsykkler, Gaming
-		</p>
-
-		<p class="mom">Jeg heter Isak og jeg liker å sykle.. Jeg er 26 år</p>
-
-		<p id="thomas-p">Jeg heter Thomas, bor i Oslo, og jeg liker Gaming</p>
-
-		<p class="andreas">
-			Jeg heter Andreas, og jeg liker pasta og turer i skogen. Og turer i
-			skogen med pasta.
-		</p>
-
-		<button onclick="handleClick()">Hit me baby one more time!</button>
-		<br />
-		<select id="name-select">
-			<option value="remy">Remy</option>
-			<option value="isak">Isak</option>
-			<option value="thomas">Thomas</option>
-			<option value="andreas">Andreas</option>
-			<option value="ugyldig">Gunnar</option>
-		</select>
-
-		<form
-			onsubmit="
-				event.preventDefault(); // Stops page refresh on submit
-
-				addInfo();
-			">
-			<button type="submit">Legg til info</button>
-			<input
-				id="info-input"
-				placeholder="Si noe gøy om deg selv"
-				required />
-		</form>
-		<ul class="info">
-			<li id="li-remy">Remy &rarr; ${remyInfo} </li>
-			<li id="li-isak">Isak &rarr; ${isakInfo}</li>
-			<li id="li-thomas">Thomas &rarr; ${thomasInfo}</li>
-			<li id="li-andreas">Andreas &rarr; ${andreasInfo}</li>
-		</ul>`;
+			<form class="info-form ${currentSelected === "" ? "hidden" : ""}"
+				onsubmit="
+					event.preventDefault(); // Stops page refresh on submitfas
+					addInfo();">
+				<input
+					id="info-input"
+					placeholder="Si noe gøy om deg selv"
+					required />
+				<button class="btn" type="submit">Legg til info</button>
+			</form>
+		</section>`;
 
 	document.getElementById("app").innerHTML = appHtml;
 }
 
 updateView();
+
+function displayInfo(btnEl) {
+	const person = btnEl.dataset.name;
+	currentSelected = person;
+
+	if (person === "remy") currentInfo = remyInfo;
+	else if (person === "isak") currentInfo = isakInfo;
+	else if (person === "thomas") currentInfo = thomasInfo;
+	else if (person === "andreas") currentInfo = andreasInfo;
+	else {
+		alert("Invalid name selected!!");
+	}
+
+	updateView();
+}
