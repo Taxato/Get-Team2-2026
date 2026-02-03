@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Pizzabaker'n</title>
+
+		<style>
+			footer {
+				margin-top: 100px;
+			}
+
+			header {
+				margin-bottom: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app"></div>
+
+		<script>
+			let hasOrdered = false;
+			let selectedDough = "Italian style";
+			let selectedVeggies = "Olives, Champignon";
+			let selectedMeat = "Ham & Pepperoni";
+
+			function updateView() {
+				document.getElementById("app").innerHTML = /* html */ `
+					${header()}
+					
+					${orderView(selectedDough, selectedVeggies, selectedMeat)}
+
+					${footer()}
+				`;
+			}
+
+			function orderView(dough, veggies, meat) {
+				if (hasOrdered)
+					return /* html */ `
+						<span>Din bestilling er motatt: ${dough} bunn med ${veggies} og ${meat}</span>
+					`;
+				else
+					return /* html */ `
+						<button onclick="hasOrdered=true; updateView();">Bestill pizza</button>
+					`;
+			}
+
+			function header() {
+				return /* html */ `
+					<header>
+						<h1>Velkommen til Pizzabaker'n!</h1>
+					</header>
+				`;
+			}
+
+			function footer() {
+				return /* html */ `
+					<footer>Har du spørsmål? ring oss på +47 12 23 34 45</footer>
+				`;
+			}
+
+			updateView();
+		</script>
+	</body>
+</html>
