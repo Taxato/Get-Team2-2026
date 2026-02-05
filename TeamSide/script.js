@@ -9,6 +9,7 @@ let currentInfo = "";
 
 let currentSelected = "";
 let headColor = "";
+
 // Add a string of info to a selected team member
 function addInfo() {
 	// Get the input element
@@ -45,16 +46,43 @@ function addInfo() {
 
 function updateView() {
 	const appHtml = /* html */ `
-
-	<select selected="${headColor}" onchange="headColor = (this.value);updateView()">
-		<option selected disabled hidden value="">Velg en Farge</option>
-		<option value="red">Rød</option>
-    	<option value="blue">Blå</option>
-    	<option value="green">Grønn</option>
-	</select>
-
+		${showColorSelect()}
 		${showHeader()}
 		${showNavBar()}
+		${showInfoSection()}
+		${showFooter()}`;
+
+	document.getElementById("app").innerHTML = appHtml;
+}
+
+function updateInfo(btnEl) {
+	const person = btnEl.dataset.name;
+	currentSelected = person;
+
+	if (person === "remy") currentInfo = remyInfo;
+	else if (person === "isak") currentInfo = isakInfo;
+	else if (person === "thomas") currentInfo = thomasInfo;
+	else if (person === "andreas") currentInfo = andreasInfo;
+	else {
+		alert("Invalid name selected!!");
+	}
+
+	updateView();
+}
+
+function showColorSelect() {
+	return /* html */ `
+		<select name="head-color-select" onchange="headColor = this.value; updateView()">
+			<option hidden value="">--Velg en farge--</option>
+			<option ${headColor === "red" ? "selected" : ""} value="red">Rød</option>
+			<option ${headColor === "green" ? "selected" : ""} value="green">Grønn</option>
+			<option ${headColor === "blue" ? "selected" : ""} value="blue">Blå</option>
+		</select>
+	`;
+}
+
+function showInfoSection() {
+	return /* html */ `
 		<section class="info-section">
 			<div class="info-btns">
 				<div
@@ -87,14 +115,12 @@ function updateView() {
 				</div>
 			</div>
 			
-			 ${showInfo()}
+			${showInfoText()}
 		</section>
-		${showFooter()}`;
-
-	document.getElementById("app").innerHTML = appHtml;
+`;
 }
 
-function showInfo() {
+function showInfoText() {
 	if (currentSelected)
 		// Check truthy falsy value of currentSelected
 		return /* html */ `
@@ -119,44 +145,17 @@ function showInfo() {
 	return "";
 }
 
-function updateInfo(btnEl) {
-	const person = btnEl.dataset.name;
-	currentSelected = person;
-
-	if (person === "remy") currentInfo = remyInfo;
-	else if (person === "isak") currentInfo = isakInfo;
-	else if (person === "thomas") currentInfo = thomasInfo;
-	else if (person === "andreas") currentInfo = andreasInfo;
-	else {
-		alert("Invalid name selected!!");
-	}
-
-	updateView();
-}
-
 function showHeader() {
-	if (headColor === "red") {
-		return /*html*/ `
-			<header>
-				<h1 class = "redText" >Team 2 aka RITA</h1>
-			</header>
-		`;
-	}
-	if (headColor === "blue") {
-		return /*html*/ `
-			<header>
-				<h1 class ="blueText">Team 2 aka RITA</h1>
-			</header>
-		`;
-	}
-	if (headColor === "green") {
-		return /*html*/ `
-			<header>
-				<h1 class = "greenText">Team 2 aka RITA</h1>
-			</header>
-		`;
-	}
-	return `<header><h1 >Team 2 aka RITA</h1></header>`;
+	let headerClass = "";
+
+	if (headColor === "red") headerClass = "redText";
+	else if (headColor === "green") headerClass = "greenText";
+	else if (headColor === "blue") headerClass = "blueText";
+
+	return /* html */ `
+		<header>
+			<h1 class="${headerClass}">Team 2 aka RITA</h1>
+		</header>`;
 }
 
 function showFooter() {
@@ -180,11 +179,6 @@ function showNavBar() {
 			</button>
 		</nav>
 	`;
-}
-
-function changeBColor(backgroundColor) {
-	document.getElementById("myBody").classList = backgroundColor;
-	console.log(document.body);
 }
 
 updateView();
