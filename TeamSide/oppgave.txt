@@ -2,7 +2,7 @@
 
 ONSDAG:
 Bygg videre på team siden deres
-- Lag en funksjon som tar inn en parameter, f.eks. name.
+- Lag en funksjon som tar inn et parameter, f.eks. name.
 - Funksjonen skal returnere en HTML-string (template literal med backticks).
 - Bruk parameteren til å returnere forskjellig HTML (med if/else).
 - Bruk returverdien til å oppdatere siden (f.eks. i updateView() eller innerHTML).
