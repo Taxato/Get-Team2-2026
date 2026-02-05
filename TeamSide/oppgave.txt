@@ -7,6 +7,27 @@ Bygg videre på team siden deres
 - Bruk parameteren til å returnere forskjellig HTML (med if/else).
 - Bruk returverdien til å oppdatere siden (f.eks. i updateView() eller innerHTML).
 
+<select> med farge <options>
+ta ut forsjellige value, og sette di til en funksjon
+funksjon må også oppdatere nettside med value'ene (updateView)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 TORSDAG:

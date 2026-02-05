@@ -25,6 +25,18 @@ body {
 	color: white;
 }
 
+.redBody{
+	background-color: rgba(255, 0, 0, 0.43);
+}
+
+.blueBody{
+	background-color: rgba(0, 0, 255, 0.542);
+}
+
+.greenBody{
+	background-color: rgba(0, 128, 0, 0.587);
+}
+
 header {
 	height: 200px;
 	background-color: #dcdcdc;

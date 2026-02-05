@@ -45,6 +45,14 @@ function addInfo() {
 
 function updateView() {
 	const appHtml = /* html */ `
+
+	<select name="" onchange="changeBColor(this.value)">
+		<option>Velg en Farge</option>
+		<option value="redBody">Rød</option>
+    	<option value="blueBody">Blå</option>
+    	<option value="greenBody">Grønn</option>
+	</select>
+
 		${showHeader()}
 		${showNavBar()}
 		<section class="info-section">
@@ -156,4 +164,10 @@ function showNavBar() {
 		</nav>
 	`;
 }
+
+function changeBColor(backgroundColor) {
+	document.getElementById("myBody").classList = backgroundColor;
+	console.log(document.body);
+}
+
 updateView();
