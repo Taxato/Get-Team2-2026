@@ -29,28 +29,28 @@ function showInfoSection() {
 					data-selected=${currentSelected === "remy"}
 					data-name="remy"
 					class="btn info-btn"
-					onclick="updateInfo(this)">
+					onclick="updateInfo(this.dataset.name)">
 					Remy
 				</div>
 				<div
 					data-selected=${currentSelected === "isak"}
 					data-name="isak"
 					class="btn info-btn"
-					onclick="updateInfo(this)">
+					onclick="updateInfo(this.dataset.name)">
 					Isak
 				</div>
 				<div
 					data-selected=${currentSelected === "thomas"}
 					data-name="thomas"
 					class="btn info-btn"
-					onclick="updateInfo(this)">
+					onclick="updateInfo(this.dataset.name)">
 					Thomas
 				</div>
 				<div
 					data-selected=${currentSelected === "andreas"}
 					data-name="andreas"
 					class="btn info-btn"
-					onclick="updateInfo(this)">
+					onclick="updateInfo(this.dataset.name)">
 					Andreas
 				</div>
 			</div>

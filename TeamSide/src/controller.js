@@ -9,21 +9,13 @@ function addInfo() {
 	const infoInput = infoInputEl.value + ". ";
 
 	// Get the right variable based on which team member is selected
-	if (currentSelected === "remy") {
-		remyInfo += infoInput;
-		currentInfo = remyInfo;
-	} else if (currentSelected === "isak") {
-		isakInfo += infoInput;
-		currentInfo = isakInfo;
-	} else if (currentSelected === "thomas") {
-		thomasInfo += infoInput;
-		currentInfo = thomasInfo;
-	} else if (currentSelected === "andreas") {
-		andreasInfo += infoInput;
-		currentInfo = andreasInfo;
-	} else {
-		alert("Nobody selected!!");
-	}
+	if (currentSelected === "remy") remyInfo += infoInput;
+	else if (currentSelected === "isak") isakInfo += infoInput;
+	else if (currentSelected === "thomas") thomasInfo += infoInput;
+	else if (currentSelected === "andreas") andreasInfo += infoInput;
+	else alert("Nobody selected!!");
+
+	updateInfo(currentSelected);
 
 	// Clear the input field
 	infoInputEl.value = "";
@@ -34,10 +26,9 @@ function addInfo() {
 	updateView();
 }
 
-function updateInfo(btnEl) {
-	const person = btnEl.dataset.name;
+function updateInfo(person) {
+	console.log(person);
 	currentSelected = person;
-
 	if (person === "remy") currentInfo = remyInfo;
 	else if (person === "isak") currentInfo = isakInfo;
 	else if (person === "thomas") currentInfo = thomasInfo;
