@@ -1,44 +1,32 @@
 
 
-ONSDAG:
-Bygg videre på team siden deres
-- Lag en funksjon som tar inn et parameter, f.eks. name.
-- Funksjonen skal returnere en HTML-string (template literal med backticks).
-- Bruk parameteren til å returnere forskjellig HTML (med if/else).
-- Bruk returverdien til å oppdatere siden (f.eks. i updateView() eller innerHTML).
+Oppgave 10.02.2026
 
-<select> med farge <options>
-ta ut forsjellige value, og sette di til en funksjon
-funksjon må også oppdatere nettside med value'ene (updateView)
+Del opp koden fra team-siden deres i MVC:
+- Model: data/variabler (state)
+- View: funksjoner som returnerer HTML / updateView()
+- Controller: funksjoner som håndterer klikk/valg og endrer data
 
 
 
+Gå gjennom funksjonene deres:
+- Hva er ansvaret til hver funksjon?
+- Skriv én setning per funksjon:
+- “Denne funksjonen har ansvar for …”
 
 
 
+Finn steder der funksjoner har mer enn ett ansvar:
+- f.eks. både endrer data og bygger HTML
+- eller både validerer input og oppdaterer view
 
 
 
+Push endringene til team-repo
 
-
-
-
-
-
-
-
-
-
-
-TORSDAG:
-Bygg videre på team-siden deres
-- Lag en variabel som lagrer et valg (f.eks. selectedName).
-- Lag en funksjon som tar inn parameteren, f.eks. name.
-- Bruk if / else til å sjekke parameteren.
-- Funksjonen skal returnere forskjellig HTML (template literal med backticks).
-- Bruk returverdien + variabelen til å oppdatere siden(f.eks. i updateView() eller med innerHTML).
-Dette er kun for å bli trygge på:
-variabler
-funksjoner med parameter
-if / else
-returverdi
+I tillegg: legg en kort kommentar i en tekstfil/README:
+- liste over funksjoner + ansvar (1 linje hver)
+- hvilke funksjoner som hadde flere ansvar (og hva dere gjorde)
+Tips:
+Målet er ikke perfekt MVC.
+Målet er å se hva som hører hjemme hvor, og rydde litt.
